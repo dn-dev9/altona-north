@@ -1,0 +1,95 @@
+.booking {
+  background: var(--offwhite);
+}
+
+.bookingGrid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: start;
+}
+
+.bookingIntro p {
+  color: #5a5855;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.priceBig {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.priceBig span {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--sage);
+}
+
+.priceSubNote {
+  font-size: 13px;
+  color: var(--sage);
+  margin-top: 6px;
+}
+
+.bookingCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(58, 74, 61, 0.06);
+}
+
+.bookingSectionTitle {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+}
+
+.bookingCta {
+  width: 100%;
+  margin-top: 20px;
+  justify-content: center;
+  font-size: 15px;
+  padding: 15px;
+}
+
+.bookingCtaDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.priceNote {
+  font-size: 11px;
+  color: var(--sage);
+  text-align: center;
+  margin-top: 12px;
+}
+
+.calSkeleton {
+  height: 290px;
+  background: linear-gradient(90deg, #f0f0ee 25%, #e8e8e5 50%, #f0f0ee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 900px) {
+  .bookingGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,225 @@
+/* Full-page centering — applied to body via the page wrapper */
+
+.loginWrap {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ── Logo ── */
+
+.loginLogo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.loginLogoName {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--forest);
+    display: block;
+}
+
+.loginLogoLabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 4px;
+    display: block;
+}
+
+/* ── Card ── */
+
+.loginCard {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(58, 74, 61, 0.06);
+}
+
+/* ── Form ── */
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroupLast {
+    margin-bottom: 28px;
+}
+
+.formLabel {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+}
+
+.formInput {
+    width: 100%;
+    background: var(--offwhite);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.formInput:focus {
+    border-color: var(--sage-dark);
+    background: #fff;
+}
+
+.formInput::placeholder {
+    color: var(--sage-light);
+}
+
+.inputError {
+    border-color: var(--error) !important;
+}
+
+/* ── Error message ── */
+
+.errorMsg {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--error-bg);
+    border: 1px solid rgba(192, 57, 43, 0.15);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--error);
+    line-height: 1.5;
+}
+
+.errorMsg svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--error);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+/* ── Sign-in button ── */
+
+.btnSignin {
+    width: 100%;
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    border-radius: 12px;
+    padding: 15px 28px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btnSignin:hover:not(:disabled) {
+    background: #2a3830;
+}
+
+.btnSignin:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btnSignin svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Footer ── */
+
+.loginFooter {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--sage);
+}
+
+.loginFooter a {
+    color: var(--sage-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.loginFooter a:hover {
+    color: var(--forest);
+}
+
+/* ── Fixed lang toggle ── */
+
+.langToggle {
+    display: flex;
+    align-items: center;
+    background: var(--sage-mist);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.langBtn {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        color 0.2s;
+    color: var(--sage);
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+.langBtnActive {
+    background: var(--forest);
+    color: var(--cream);
+}
+
+.topRight {
+    position: fixed;
+    top: 16px;
+    right: 24px;
+    z-index: 100;
+}
+
+/* ── Page shell (centers content like body in the HTML) ── */
+
+.pageShell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}

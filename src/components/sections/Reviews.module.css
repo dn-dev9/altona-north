@@ -1,0 +1,238 @@
+.reviews {
+    background: var(--forest);
+}
+
+.reviewsLabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(156, 169, 159, 0.7);
+    margin-bottom: 12px;
+}
+
+.reviewsTitle {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+/* ── Score row ── */
+
+.scoreRow {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.scoreBig {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1;
+}
+
+.scoreLabel {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(245, 242, 236, 0.8);
+    font-family: var(--font-display);
+    font-style: italic;
+}
+
+.scoreCount {
+    font-size: 12px;
+    color: rgba(156, 169, 159, 0.8);
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.scoreCats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.scoreCat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.scoreCatName {
+    font-size: 11px;
+    color: rgba(156, 169, 159, 0.8);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.scoreCatBar {
+    height: 3px;
+    background: rgba(156, 169, 159, 0.25);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.scoreCatFill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+}
+
+.scoreCatVal {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sage-light);
+}
+
+/* ── Slider ── */
+
+.reviewsSlider {
+    overflow: hidden;
+}
+
+.reviewsTrack {
+    padding-left: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.reviewCard {
+    flex: 0 0 340px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(156, 169, 159, 0.18);
+    border-radius: 16px;
+    padding: 28px;
+    backdrop-filter: blur(4px);
+}
+
+.reviewScoreBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200, 169, 122, 0.15);
+    border: 1px solid rgba(200, 169, 122, 0.3);
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+}
+
+.reviewScoreNum {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.reviewStars {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.reviewText {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(245, 242, 236, 0.8);
+    line-height: 1.45;
+    letter-spacing: 0.9;
+    margin-bottom: 20px;
+}
+
+.reviewAuthor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewAvatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(156, 169, 159, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--sage-light);
+    flex-shrink: 0;
+}
+
+.reviewName {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+}
+
+.reviewCountry {
+    font-size: 12px;
+    color: rgba(156, 169, 159, 0.7);
+}
+
+/* ── Controls ── */
+
+.reviewsControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.revBtn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(156, 169, 159, 0.3);
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sage-light);
+    font-size: 18px;
+    transition: all 0.2s;
+}
+
+.revBtn:hover {
+    background: rgba(156, 169, 159, 0.1);
+    border-color: var(--sage);
+}
+
+.revDots {
+    display: flex;
+    gap: 6px;
+    margin-left: 8px;
+}
+
+.revDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(156, 169, 159, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.revDotActive {
+    background: var(--gold);
+    width: 18px;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 450px) {
+    .reviewCard {
+        flex: 0 0 290px;
+    }
+}

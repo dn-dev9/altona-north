@@ -1,0 +1,59 @@
+.guestsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+.guestsLabel {
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.guestsSub {
+  font-size: 12px;
+  color: var(--sage);
+  margin-top: 2px;
+}
+
+.guestsCtrl {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.guestsBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--sage-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.guestsBtn:hover:not(:disabled) {
+  border-color: var(--sage-dark);
+  background: var(--sage-mist);
+}
+
+.guestsBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.guestsCount {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--forest);
+  min-width: 20px;
+  text-align: center;
+}

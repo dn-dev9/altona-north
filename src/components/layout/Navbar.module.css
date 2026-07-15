@@ -1,0 +1,126 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 32px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition:
+        background 0.3s,
+        box-shadow 0.3s;
+}
+
+.navbarScrolled {
+    background: rgba(250, 249, 246, 0.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border);
+}
+
+.navLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbarScrolled .navLogo {
+    color: var(--forest);
+}
+
+.navRight {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navLink {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 242, 236, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbarScrolled .navLink {
+    color: var(--sage-dark);
+}
+
+.navLink:hover {
+    color: var(--cream);
+}
+
+.navbarScrolled .navLink:hover {
+    color: var(--forest);
+}
+
+.langToggle {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.navbarScrolled .langToggle {
+    background: var(--sage-mist);
+    border-color: var(--border);
+}
+
+.langBtn {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        color 0.2s;
+    color: rgba(245, 242, 236, 0.7);
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+.navbarScrolled .langBtn {
+    color: var(--sage);
+}
+
+.langBtnActive {
+    background: var(--sage-dark);
+    color: var(--cream);
+}
+
+.navbarScrolled .langBtnActive {
+    background: var(--forest);
+    color: var(--cream);
+}
+
+.navCta {
+    padding: 9px 20px;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 940px) {
+    .navRight {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navLink {
+        display: none;
+    }
+
+    .navCta {
+        display: none;
+    }
+}

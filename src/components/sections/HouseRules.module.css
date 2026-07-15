@@ -1,0 +1,72 @@
+.rules {
+  background: var(--cream);
+}
+
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.ruleCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.ruleIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--sage-mist);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.ruleIcon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--sage-dark);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ruleTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.ruleTime {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--sage-dark);
+  margin-bottom: 4px;
+}
+
+.ruleTimeSmall {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--sage-dark);
+  margin-bottom: 4px;
+}
+
+.ruleNote {
+  font-size: 13px;
+  color: #7a7875;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .rulesGrid {
+    grid-template-columns: 1fr;
+  }
+}

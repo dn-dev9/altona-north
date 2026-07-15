@@ -1,0 +1,85 @@
+.footer {
+  background: var(--ink);
+  padding: 60px 0 36px;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.footerLogo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.footerTagline {
+  font-size: 14px;
+  color: rgba(245, 242, 236, 0.45);
+  max-width: 280px;
+  line-height: 1.7;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.footerLink {
+  font-size: 13px;
+  color: rgba(245, 242, 236, 0.5);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.footerLink:hover {
+  color: var(--cream);
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(245, 242, 236, 0.1);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerCopy {
+  font-size: 12px;
+  color: rgba(245, 242, 236, 0.3);
+}
+
+.footerBooking {
+  font-size: 12px;
+  color: rgba(245, 242, 236, 0.3);
+}
+
+.footerBooking a {
+  color: rgba(156, 169, 159, 0.5);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .footerLinks {
+    align-items: flex-start;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

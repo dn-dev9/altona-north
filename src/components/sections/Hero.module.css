@@ -1,0 +1,165 @@
+.hero {
+    position: relative;
+    height: 70vh;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.heroBg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #4a5a4d 0%, #6b7d6e 40%, #8a9e8c 70%, #a8b8a9 100%);
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(30, 40, 32, 0.72) 0%,
+        rgba(30, 40, 32, 0.3) 45%,
+        rgba(30, 40, 32, 0.05) 100%
+    );
+}
+
+.heroScore {
+    position: absolute;
+    top: 80px;
+    right: 32px;
+    z-index: 2;
+    background: rgba(58, 74, 61, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(156, 169, 159, 0.3);
+    border-radius: 14px;
+    padding: 14px 18px;
+    text-align: center;
+}
+
+.heroScoreNum {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1;
+}
+
+.heroScoreLabel {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: rgba(245, 242, 236, 0.65);
+    text-transform: uppercase;
+    margin-top: 16px;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 0 32px 72px;
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.heroEyebrow {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 242, 236, 0.75);
+    margin-bottom: 14px;
+}
+
+.heroTitle {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.heroSubtitle {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(245, 242, 236, 0.8);
+    margin-bottom: 40px;
+}
+
+.heroBookingBar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(250, 249, 246, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 6px;
+    max-width: 680px;
+    box-shadow: 0 8px 32px rgba(30, 40, 32, 0.25);
+}
+
+.hbbField {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: block;
+}
+
+.hbbField:hover {
+    background: var(--sage-mist);
+}
+
+.hbbLabel {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.hbbValue {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+}
+
+.hbbSep {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+.hbbBtn {
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 580px) {
+    .heroBookingBar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hbbSep {
+        height: 1px;
+        width: 40%;
+    }
+}

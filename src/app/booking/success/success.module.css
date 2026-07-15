@@ -1,0 +1,468 @@
+/* ── Nav ── */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 32px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(250, 249, 246, 0.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border);
+}
+
+.navLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--forest);
+    text-decoration: none;
+}
+
+.langToggle {
+    display: flex;
+    align-items: center;
+    background: var(--sage-mist);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.langBtn {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    color: var(--sage);
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+.langBtnActive {
+    background: var(--forest);
+    color: var(--cream);
+}
+
+/* ── Page layout ── */
+
+.page {
+    padding-top: 68px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.pageInner {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 56px 24px;
+}
+
+/* ── Animated checkmark ── */
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes drawCheck {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.checkWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.checkCircle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--sage-mist);
+    border: 2px solid var(--sage-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.checkCircle svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--sage-dark);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: drawCheck 0.4s 0.3s ease forwards;
+}
+
+/* ── Heading ── */
+
+.successHeading {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--forest);
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.successSub {
+    font-size: 15px;
+    color: #5a5855;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ── Summary card ── */
+
+.summaryCard {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 24px rgba(58, 74, 61, 0.05);
+}
+
+.summaryHeader {
+    background: var(--forest);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summaryHeaderProperty {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+}
+
+.summaryHeaderLocation {
+    font-size: 12px;
+    color: rgba(245, 242, 236, 0.6);
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.summaryHeaderLocation svg {
+    width: 11px;
+    height: 11px;
+    stroke: rgba(245, 242, 236, 0.5);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+.summaryRef {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: rgba(245, 242, 236, 0.5);
+    text-align: right;
+}
+
+.summaryRefVal {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    margin-top: 2px;
+}
+
+/* ── Dates row ── */
+
+.summaryDatesRow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.summaryDateBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryDateBlockRight {
+    text-align: right;
+}
+
+.summaryDateLabel {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 4px;
+}
+
+.summaryDateVal {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1;
+}
+
+.summaryDateWeekday {
+    font-size: 12px;
+    color: var(--sage);
+    margin-top: 3px;
+}
+
+.summaryDateArrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0 16px;
+}
+
+.summaryDateArrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--sage-light);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.summaryDateNights {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sage);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+/* ── Detail cells ── */
+
+.summaryDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+}
+
+.summaryDetailCell {
+    padding: 18px 28px;
+    border-right: 1px solid var(--border);
+}
+
+.summaryDetailCell:last-child {
+    border-right: none;
+}
+
+.summaryDetailLabel {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 4px;
+}
+
+.summaryDetailVal {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--forest);
+}
+
+/* ── Price ── */
+
+.summaryPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+}
+
+.summaryPriceLabel {
+    font-size: 14px;
+    color: #5a5855;
+}
+
+.summaryPriceRight {
+    text-align: right;
+}
+
+.summaryPriceVal {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--forest);
+}
+
+.summaryPriceNote {
+    font-size: 11px;
+    color: var(--sage);
+    margin-top: 2px;
+}
+
+/* ── Email note ── */
+
+.emailNote {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--sage-mist);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.emailNote svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--sage-dark);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.emailNoteText {
+    font-size: 13px;
+    color: var(--sage-dark);
+    line-height: 1.6;
+}
+
+/* ── Action buttons ── */
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btnPrimary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    border-radius: 12px;
+    padding: 15px 28px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.btnPrimary:hover {
+    background: #2a3830;
+}
+
+.btnWa {
+    background: #25d366;
+    color: #fff;
+}
+
+.btnWa:hover {
+    background: #1ea855;
+}
+
+.btnSecondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--sage-dark);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btnSecondary:hover {
+    border-color: var(--sage);
+    color: var(--forest);
+}
+
+.btnSecondary svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 500px) {
+    .successHeading {
+        font-size: 36px;
+    }
+
+    .summaryDatesRow {
+        padding: 20px 20px;
+    }
+
+    .summaryDetailCell {
+        padding: 14px 16px;
+    }
+
+    .summaryPrice {
+        padding: 16px 20px;
+    }
+
+    .summaryHeader {
+        padding: 16px 20px;
+    }
+
+    .nav {
+        padding: 0 16px;
+    }
+}

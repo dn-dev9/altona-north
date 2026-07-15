@@ -1,0 +1,444 @@
+/* ── Page grid ── */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ── Calendar card ── */
+
+.calCard {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+}
+
+.calCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.calCardTitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--forest);
+}
+
+.calNavRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.calNavBtn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sage-dark);
+    transition: all 0.2s;
+    font-size: 16px;
+    font-family: var(--font-body);
+    line-height: 1;
+}
+
+.calNavBtn:hover {
+    background: var(--sage-mist);
+    border-color: var(--sage);
+}
+
+.calMonthLabel {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--forest);
+    min-width: 160px;
+    text-align: center;
+}
+
+/* ── Legend ── */
+
+.calLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--sage);
+}
+
+.legendDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* ── Calendar grid ── */
+
+.calGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calDow {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sage);
+    text-align: center;
+    padding: 6px 0;
+    letter-spacing: 0.05em;
+}
+
+.calDay {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--ink);
+    position: relative;
+    border: 1.5px solid transparent;
+}
+
+.calDayEmpty {
+    aspect-ratio: 1;
+    cursor: default;
+}
+
+.calDayPast {
+    color: var(--sage-light);
+    cursor: not-allowed;
+}
+
+.calDayAvailable:hover {
+    background: var(--sage-mist);
+    border-color: var(--sage-light);
+}
+
+.calDayBooked {
+    background: #3a4a3d;
+    color: var(--cream);
+    cursor: not-allowed;
+}
+
+.calDayIcal {
+    background: #c8cfc9;
+    color: var(--sage-dark);
+    cursor: not-allowed;
+}
+
+.calDayBlocked {
+    background: #e4d5c5;
+    color: #8a6a50;
+    border-color: #d4b89a;
+}
+
+.calDayBlocked:hover {
+    background: #dcc8b4;
+    border-color: var(--gold);
+}
+
+.calDayPriced {
+    background: #eef0eb;
+    color: var(--forest);
+}
+
+.calDayPriced:hover {
+    background: #e0e8e1;
+    border-color: var(--sage);
+}
+
+.calDayLoading {
+    background: var(--border);
+    color: transparent;
+    cursor: default;
+    opacity: 0.5;
+}
+
+.calDayPrice {
+    font-size: 9px;
+    color: var(--sage);
+    margin-top: 1px;
+    line-height: 1;
+}
+
+.calDayBooked .calDayPrice {
+    color: rgba(245, 242, 236, 0.5);
+}
+
+/* ── Right panel ── */
+
+.rightPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.panelTitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 4px;
+}
+
+.panelSub {
+    font-size: 12px;
+    color: var(--sage);
+    margin-bottom: 20px;
+}
+
+/* ── Add price form ── */
+
+.priceForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    background: var(--offwhite);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.priceFormTitle {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 4px;
+}
+
+.formRow2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.formLabel {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sage);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.formInput {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.formInput:focus {
+    border-color: var(--sage-dark);
+}
+
+.formInputError {
+    border-color: var(--error) !important;
+}
+
+.formError {
+    font-size: 11px;
+    color: var(--error);
+}
+
+.btnAdd {
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    border-radius: 9px;
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.btnAdd:hover:not(:disabled) {
+    background: #2a3830;
+}
+
+.btnAdd:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btnAdd svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Price range list ── */
+
+.priceList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.priceRangeCard {
+    background: var(--offwhite);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.priceRangeInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.priceRangeLabel {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 2px;
+}
+
+.priceRangeDates {
+    font-size: 11px;
+    color: var(--sage);
+}
+
+.priceRangeRate {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--forest);
+    white-space: nowrap;
+}
+
+.priceRangeRate span {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--sage);
+}
+
+.btnDelete {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sage);
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.btnDelete:hover {
+    background: #fdf0ee;
+    border-color: #e07a6e;
+    color: #c0392b;
+}
+
+.btnDelete svg {
+    width: 13px;
+    height: 13px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.emptyPrices {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: var(--sage);
+}
+
+/* ── Block info panel ── */
+
+.blockInfo {
+    font-size: 13px;
+    color: #5a5855;
+    line-height: 1.6;
+    padding: 12px 14px;
+    background: var(--sage-mist);
+    border-radius: 10px;
+}
+
+.blockInfo strong {
+    color: var(--forest);
+}
+
+/* ── Error toast ── */
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    z-index: 1000;
+    pointer-events: none;
+    white-space: nowrap;
+}

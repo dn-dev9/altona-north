@@ -1,0 +1,245 @@
+/* ── Page root ── */
+
+.page {
+    max-width: 780px;
+    width: 100%;
+}
+
+/* ── Settings section card ── */
+
+.section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sectionIcon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--sage-mist);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sectionIcon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--sage-dark);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sectionTitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 2px;
+}
+
+.sectionSub {
+    font-size: 12px;
+    color: var(--sage);
+    line-height: 1.5;
+}
+
+/* ── Form layout ── */
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.formGrid3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formLabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+}
+
+.formInput {
+    background: var(--offwhite);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 11px 14px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+}
+
+.formInput:focus {
+    border-color: var(--sage-dark);
+    background: #fff;
+}
+
+.formHint {
+    font-size: 11px;
+    color: var(--sage);
+    line-height: 1.4;
+}
+
+/* ── € prefix input ── */
+
+.inputPrefix {
+    position: relative;
+}
+
+.inputPrefixSymbol {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--sage);
+    pointer-events: none;
+}
+
+.inputPrefix .formInput {
+    padding-left: 28px;
+}
+
+/* ── Skeleton loading ── */
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.skeletonInput {
+    height: 44px;
+    border-radius: 9px;
+    background: linear-gradient(
+        90deg,
+        var(--border) 25%,
+        var(--sage-mist) 50%,
+        var(--border) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    width: 100%;
+}
+
+/* ── Save bar ── */
+
+.saveBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.saveNote {
+    font-size: 12px;
+    color: var(--sage);
+}
+
+.btnSave {
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    border-radius: 10px;
+    padding: 13px 32px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btnSave:hover:not(:disabled) {
+    background: #2a3830;
+}
+
+.btnSave:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btnSave svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Toast ── */
+
+.toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--forest);
+    color: var(--cream);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(58, 74, 61, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 300;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.toastVisible {
+    transform: translateX(-50%) translateY(0);
+}
+
+.toastError {
+    background: #c0392b;
+    box-shadow: 0 4px 16px rgba(192, 57, 43, 0.25);
+}
+
+.toast svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--sage-light);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}

@@ -1,0 +1,279 @@
+/* ── Nav ── */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 32px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(250, 249, 246, 0.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border);
+}
+
+.navLogo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--forest);
+    text-decoration: none;
+}
+
+.langToggle {
+    display: flex;
+    align-items: center;
+    background: var(--sage-mist);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.langBtn {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    color: var(--sage);
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+.langBtnActive {
+    background: var(--forest);
+    color: var(--cream);
+}
+
+/* ── Page layout ── */
+
+.page {
+    padding-top: 68px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.pageInner {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 56px 24px;
+    text-align: center;
+}
+
+/* ── Animated icon ── */
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.iconWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.iconCircle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f5f0eb;
+    border: 2px solid #e4d8cc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.iconCircle svg {
+    width: 32px;
+    height: 32px;
+    stroke: #b8a48a;
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Heading ── */
+
+.cancelHeading {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.1;
+    margin-bottom: 14px;
+}
+
+.cancelSub {
+    font-size: 15px;
+    color: #5a5855;
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ── Details card ── */
+
+.detailsCard {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+.detailsCardTitle {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+}
+
+.detailsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.detailsRow:last-child {
+    border-bottom: none;
+}
+
+.detailsRowLabel {
+    font-size: 13px;
+    color: var(--sage);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detailsRowLabel svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--sage);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+.detailsRowVal {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--forest);
+}
+
+/* ── Action buttons ── */
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btnPrimary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    border-radius: 12px;
+    padding: 15px 28px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.btnPrimary:hover {
+    background: #2a3830;
+}
+
+.btnPrimary svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btnSecondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--sage-dark);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btnSecondary:hover {
+    border-color: var(--sage);
+    color: var(--forest);
+}
+
+.btnSecondary svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 500px) {
+    .cancelHeading {
+        font-size: 34px;
+    }
+
+    .detailsCard {
+        padding: 20px 20px;
+    }
+
+    .nav {
+        padding: 0 16px;
+    }
+}
