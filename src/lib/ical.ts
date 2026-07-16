@@ -1,21 +1,25 @@
-import { async as icalAsync } from 'node-ical'
+import ICAL from 'ical.js'
 import { addDays, format, isBefore, startOfDay } from 'date-fns'
 
 export async function fetchIcalBlockedDates(url: string): Promise<string[]> {
-    const data = await icalAsync.fromURL(url)
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`Failed to fetch iCal: ${res.status}`)
+    const text = await res.text()
+
+    const comp = new ICAL.Component(ICAL.parse(text))
+    const vevents = comp.getAllSubcomponents('vevent')
     const blocked = new Set<string>()
 
-    for (const component of Object.values(data)) {
-        if (!component || component.type !== 'VEVENT') continue
-        if (!component.start) continue
+    for (const vevent of vevents) {
+        const event = new ICAL.Event(vevent)
+        if (!event.startDate) continue
 
-        const start = startOfDay(new Date(component.start))
-        const end = component.end
-            ? startOfDay(new Date(component.end))
+        const start = startOfDay(event.startDate.toJSDate())
+        const end = event.endDate
+            ? startOfDay(event.endDate.toJSDate())
             : addDays(start, 1)
 
-        // Enumerate from start (inclusive) to end (exclusive).
-        // iCal DTEND is non-inclusive — checkout day is not a blocked night.
+        // DTEND is exclusive — checkout day is not a blocked night
         let cursor = start
         while (isBefore(cursor, end)) {
             blocked.add(format(cursor, 'yyyy-MM-dd'))
