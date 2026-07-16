@@ -23,6 +23,7 @@ interface PricedRange {
 interface BookingRaw {
     checkin: string
     checkout: string
+    status: string
 }
 
 type DayState = 'past' | 'booked' | 'ical' | 'blocked' | 'priced' | 'available'
@@ -67,7 +68,9 @@ export default function CalendarPage() {
             setBlockedDates(datesData?.blockedDates ?? [])
 
             const bookingSet = new Set<string>()
-            const bookings: BookingRaw[] = Array.isArray(bookingsData) ? bookingsData : []
+            const bookings: BookingRaw[] = Array.isArray(bookingsData)
+                ? bookingsData.filter((b: BookingRaw) => b.status !== 'cancelled')
+                : []
             for (const b of bookings) {
                 let d = parseISO(b.checkin)
                 const checkout = parseISO(b.checkout)
@@ -429,7 +432,7 @@ export default function CalendarPage() {
                         Click any available date on the calendar to block it. Click a blocked date to unblock it.
                     </div>
                     <div className={styles.blockInfo}>
-                        <strong>Booking.com dates</strong> are synced automatically every 15 minutes and
+                        <strong>Booking.com dates</strong> are synced automatically once daily and
                         cannot be edited here. To unblock a Booking.com date, cancel it on Booking.com directly.
                     </div>
                 </div>
