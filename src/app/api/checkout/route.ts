@@ -52,6 +52,13 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Checkout must be after checkin' }, { status: 400 })
         }
 
+        // Delete abandoned pending bookings older than 1 hour before checking availability
+        await supabaseServer
+            .from('bookings')
+            .delete()
+            .eq('status', 'pending')
+            .lt('created_at', new Date(Date.now() - 60 * 60 * 1000).toISOString())
+
         // Fetch everything needed in parallel
         const [settingsRes, pricingRes, blockedRes, icalRes, overlapRes] = await Promise.all([
             supabaseServer

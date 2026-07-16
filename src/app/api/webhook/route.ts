@@ -102,6 +102,20 @@ async function sendEmails(booking: {
     const checkoutFmt = format(parseISO(booking.checkout), 'd MMM yyyy')
     const totalEur = Math.round(booking.total_eur / 100)
 
+    const { data: settings } = await supabaseServer
+        .from('settings')
+        .select('whatsapp, contact_email')
+        .eq('id', 1)
+        .single()
+
+    const waNumber = settings?.whatsapp ? settings.whatsapp.replace(/\D/g, '') : ''
+    const contactFooter = `
+  <div style="margin-top:32px;padding-top:16px;border-top:1px solid #eee;font-size:13px;color:#666">
+    <p style="margin:0 0 6px"><strong>Need to reach us?</strong></p>
+    ${waNumber ? `<p style="margin:0 0 4px">WhatsApp: <a href="https://wa.me/${waNumber}" style="color:#25D366;text-decoration:none">${settings!.whatsapp}</a></p>` : ''}
+    ${settings?.contact_email ? `<p style="margin:0">Email: <a href="mailto:${settings.contact_email}" style="color:#3a7a52;text-decoration:none">${settings.contact_email}</a></p>` : ''}
+  </div>`
+
     // Guest confirmation
     await resend.emails.send({
         from,
@@ -120,7 +134,7 @@ async function sendEmails(booking: {
     <tr><td style="padding:8px 0;color:#666">Total paid</td><td style="padding:8px 0;font-weight:600">€${totalEur}</td></tr>
   </table>
   ${booking.special_requests ? `<p><strong>Special requests:</strong> ${booking.special_requests}</p>` : ''}
-  <p style="color:#666;font-size:14px">If you have any questions, reply to this email or message us on WhatsApp.</p>
+  ${contactFooter}
 </div>`,
     })
 

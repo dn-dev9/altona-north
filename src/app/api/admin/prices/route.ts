@@ -31,6 +31,12 @@ export async function GET(request: Request) {
         const user = await requireAdmin(request)
         if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
+        // Delete expired ranges before returning the list
+        await supabaseServer
+            .from('pricing')
+            .delete()
+            .lt('date_to', new Date().toISOString().slice(0, 10))
+
         const { data, error } = await supabaseServer
             .from('pricing')
             .select('id, date_from, date_to, price_eur, label')
