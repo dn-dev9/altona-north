@@ -167,6 +167,9 @@ export async function POST(request: Request) {
 
         return NextResponse.json({ url: approveUrl })
     } catch (err) {
-        return NextResponse.json({ error: String(err) }, { status: 500 })
+        const message = err instanceof Error ? err.message : String(err)
+        const body = (err as { body?: unknown }).body
+        console.error('[checkout] error:', message, body)
+        return NextResponse.json({ error: message || 'PayPal error', detail: body }, { status: 500 })
     }
 }
