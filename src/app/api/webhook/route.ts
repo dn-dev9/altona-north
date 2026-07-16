@@ -90,6 +90,7 @@ async function sendEmails(booking: {
     guests: number
     guest_name: string
     guest_email: string
+    guest_phone: string
     total_eur: number
     special_requests: string
 }) {
@@ -150,6 +151,7 @@ async function sendEmails(booking: {
   <table style="width:100%;border-collapse:collapse">
     <tr><td style="padding:6px 0;color:#666">Guest</td><td style="padding:6px 0;font-weight:600">${booking.guest_name}</td></tr>
     <tr><td style="padding:6px 0;color:#666">Email</td><td style="padding:6px 0">${booking.guest_email}</td></tr>
+    <tr><td style="padding:6px 0;color:#666">Phone</td><td style="padding:6px 0">${booking.guest_phone}</td></tr>
     <tr><td style="padding:6px 0;color:#666">Check-in</td><td style="padding:6px 0;font-weight:600">${checkinFmt}</td></tr>
     <tr><td style="padding:6px 0;color:#666">Check-out</td><td style="padding:6px 0;font-weight:600">${checkoutFmt}</td></tr>
     <tr><td style="padding:6px 0;color:#666">Guests</td><td style="padding:6px 0">${booking.guests}</td></tr>
