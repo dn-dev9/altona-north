@@ -53,6 +53,8 @@ export default function BookingsPage() {
     const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
     const [panelOpen, setPanelOpen] = useState(false)
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+    const [confirmingCancel, setConfirmingCancel] = useState(false)
+    const [cancelLoading, setCancelLoading] = useState(false)
 
     useEffect(() => {
         adminFetch('/api/bookings')
@@ -66,11 +68,34 @@ export default function BookingsPage() {
         if (closeTimer.current) clearTimeout(closeTimer.current)
         setSelectedBooking(booking)
         setPanelOpen(true)
+        setConfirmingCancel(false)
     }
 
     function closePanel() {
         setPanelOpen(false)
+        setConfirmingCancel(false)
         closeTimer.current = setTimeout(() => setSelectedBooking(null), 300)
+    }
+
+    async function handleCancel() {
+        if (!selectedBooking) return
+        setCancelLoading(true)
+        try {
+            const res = await adminFetch('/api/bookings', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: selectedBooking.id, status: 'cancelled' }),
+            })
+            if (!res.ok) throw new Error()
+            const updated = { ...selectedBooking, status: 'cancelled' as const }
+            setBookings(prev => prev.map(b => b.id === updated.id ? updated : b))
+            setSelectedBooking(updated)
+            setConfirmingCancel(false)
+        } catch {
+            // leave panel open, user can retry
+        } finally {
+            setCancelLoading(false)
+        }
     }
 
     const todayStr = format(new Date(), 'yyyy-MM-dd')
@@ -319,6 +344,14 @@ export default function BookingsPage() {
                                         €{(b.total_eur / 100).toFixed(0)}
                                     </span>
                                 </div>
+                                {b.paypal_order_id && (
+                                    <div className={styles.detailRow} style={{ marginTop: 10 }}>
+                                        <span className={styles.detailRowLabel}>PayPal Order ID</span>
+                                        <span className={`${styles.detailRowVal} ${styles.detailRowValNormal} ${styles.paypalOrderId}`}>
+                                            {b.paypal_order_id}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Special requests — hidden when empty */}
@@ -358,6 +391,38 @@ export default function BookingsPage() {
                                 </svg>
                                 WhatsApp guest
                             </a>
+
+                            {b.status !== 'cancelled' && (
+                                confirmingCancel ? (
+                                    <div className={styles.cancelConfirm}>
+                                        <span className={styles.cancelConfirmText}>Cancel this booking?</span>
+                                        <div className={styles.cancelConfirmBtns}>
+                                            <button
+                                                className={styles.btnConfirmYes}
+                                                onClick={handleCancel}
+                                                disabled={cancelLoading}
+                                            >
+                                                {cancelLoading ? 'Cancelling…' : 'Yes, cancel'}
+                                            </button>
+                                            <button
+                                                className={styles.btnConfirmNo}
+                                                onClick={() => setConfirmingCancel(false)}
+                                                disabled={cancelLoading}
+                                            >
+                                                Keep
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <button
+                                        className={styles.btnCancel}
+                                        onClick={() => setConfirmingCancel(true)}
+                                    >
+                                        Cancel booking
+                                    </button>
+                                )
+                            )}
+
                             <div className={styles.refundNote}>
                                 To issue a refund, log into your PayPal account and find this payment.
                             </div>

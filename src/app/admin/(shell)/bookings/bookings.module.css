@@ -497,3 +497,96 @@
     margin-top: 10px;
     line-height: 1.5;
 }
+
+.paypalOrderId {
+    font-size: 11px;
+    font-family: monospace;
+    word-break: break-all;
+}
+
+.btnCancel {
+    width: 100%;
+    margin-top: 10px;
+    padding: 11px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--error);
+    background: transparent;
+    color: var(--error);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btnCancel:hover {
+    background: var(--error);
+    color: #fff;
+}
+
+.cancelConfirm {
+    margin-top: 10px;
+    padding: 12px 14px;
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+}
+
+.cancelConfirmText {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #b91c1c;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.cancelConfirmBtns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.btnConfirmYes {
+    padding: 9px;
+    border-radius: 8px;
+    border: none;
+    background: #dc2626;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btnConfirmYes:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+.btnConfirmYes:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btnConfirmNo {
+    padding: 9px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btnConfirmNo:hover:not(:disabled) {
+    background: var(--offwhite);
+}
+
+.btnConfirmNo:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

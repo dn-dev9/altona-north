@@ -7,7 +7,7 @@ import { supabaseServer } from '@/lib/supabase'
 function makePaypalClient() {
     return new Client({
         environment:
-            process.env.NODE_ENV === 'production'
+            process.env.PAYPAL_ENVIRONMENT === 'production'
                 ? Environment.Production
                 : Environment.Sandbox,
         clientCredentialsAuthCredentials: {

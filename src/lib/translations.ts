@@ -202,7 +202,7 @@ export const translations = {
         confirm_special_requests: "Special requests",
         confirm_special_requests_placeholder: "Early check-in, baby cot, allergies, or anything else we should know...",
         confirm_btn: "Reserve & Pay — €{total}",
-        confirm_secure: "Secure payment via Stripe. You will be redirected to Stripe's payment page.",
+        confirm_secure: "Secure payment via PayPal. You will be redirected to PayPal's payment page.",
         confirm_cancellation_title: "Cancellation policy:",
         confirm_cancellation_body:
             "Free cancellation up to 7 days before check-in. No refund within 7 days of check-in. To cancel, contact the host via WhatsApp.",
@@ -219,7 +219,7 @@ export const translations = {
         success_checkout_time: "Check-out time",
         success_checkout_by: "by 11:00",
         success_total_paid: "Total paid",
-        success_paid_note: "Paid via Stripe · No charges at property",
+        success_paid_note: "Paid via PayPal · No charges at property",
         success_email_note:
             "A confirmation email with all booking details is on its way. If you don't see it within a few minutes, check your spam folder.",
         success_wa_btn: "Contact host on WhatsApp",
@@ -447,7 +447,7 @@ export const translations = {
         confirm_special_requests: "Специални изисквания",
         confirm_special_requests_placeholder: "Ранен чекин, бебешко легло, алергии или друго, което трябва да знаем...",
         confirm_btn: "Резервирай и плати — €{total}",
-        confirm_secure: "Сигурно плащане чрез Stripe. Ще бъдете пренасочени към страницата за плащане на Stripe.",
+        confirm_secure: "Сигурно плащане чрез PayPal. Ще бъдете пренасочени към страницата за плащане на PayPal.",
         confirm_cancellation_title: "Политика за анулиране:",
         confirm_cancellation_body:
             "Безплатно анулиране до 7 дни преди настаняване. Без възстановяване в рамките на 7 дни. За анулиране се свържете с домакина чрез WhatsApp.",
@@ -464,7 +464,7 @@ export const translations = {
         success_checkout_time: "Час напускане",
         success_checkout_by: "до 11:00",
         success_total_paid: "Платено общо",
-        success_paid_note: "Платено чрез Stripe · Без такси на място",
+        success_paid_note: "Платено чрез PayPal · Без такси на място",
         success_email_note:
             "Имейл с потвърждение и всички детайли е на път. Ако не го виждате след няколко минути, проверете папката за спам.",
         success_wa_btn: "Свържете се с домакина в WhatsApp",

@@ -153,9 +153,39 @@
 }
 
 @media screen and (max-width: 580px) {
+    .hero {
+        height: 100vh;
+    }
+
+    .heroContent {
+        padding: 0 32px 35px;
+    }
+
+    .heroEyebrow {
+        margin-bottom: 6px;
+    }
+    .heroTitle {
+        margin-bottom: 3px;
+    }
+    .heroSubtitle {
+        margin-bottom: 10px;
+    }
+
     .heroBookingBar {
         flex-direction: column;
         text-align: center;
+    }
+
+    .heroScore {
+        padding: 7px 9px;
+    }
+
+    .heroScoreNum {
+        font-size: 32px;
+    }
+
+    .heroScoreLabel {
+        font-size: 9px;
     }
 
     .hbbSep {

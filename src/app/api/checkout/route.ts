@@ -13,7 +13,7 @@ import type { PricingSettings, PricingOverride } from '@/lib/pricing'
 function makePaypalClient() {
     return new Client({
         environment:
-            process.env.NODE_ENV === 'production'
+            process.env.PAYPAL_ENVIRONMENT === 'production'
                 ? Environment.Production
                 : Environment.Sandbox,
         clientCredentialsAuthCredentials: {
