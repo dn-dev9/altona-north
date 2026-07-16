@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ['@paypal/paypal-server-sdk', 'node-ical'],
 };
 
 export default nextConfig;
