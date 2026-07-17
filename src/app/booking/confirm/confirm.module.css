@@ -67,7 +67,9 @@
 .langBtn {
     padding: 5px 12px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition:
+        background 0.2s,
+        color 0.2s;
     color: var(--sage);
     background: transparent;
     border: none;
@@ -153,7 +155,9 @@
     font-size: 14px;
     color: var(--ink);
     outline: none;
-    transition: border-color 0.2s, background 0.2s;
+    transition:
+        border-color 0.2s,
+        background 0.2s;
 }
 
 .formInput:focus {
@@ -193,7 +197,9 @@
     font-weight: 500;
     letter-spacing: 0.03em;
     cursor: pointer;
-    transition: background 0.2s, opacity 0.2s;
+    transition:
+        background 0.2s,
+        opacity 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -475,6 +481,14 @@
 
     .summaryCard {
         position: static;
+    }
+
+    .pageInner > *:first-child {
+        order: 2;
+    }
+
+    .pageInner > *:last-child {
+        order: 1;
     }
 }
 

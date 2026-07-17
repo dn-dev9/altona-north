@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { differenceInCalendarDays, parseISO } from 'date-fns'
 import { useTranslation } from '@/context/LangContext'
 import { supabaseBrowser } from '@/lib/supabase'
 import Calendar from '@/components/booking/Calendar'
@@ -83,14 +84,27 @@ export default function BookingWidget({
     }).finally(() => setLoading(false))
   }, [])
 
+  const nights =
+    checkin && checkout
+      ? differenceInCalendarDays(parseISO(checkout), parseISO(checkin))
+      : 0
+
+  const tooFewNights = checkin !== null && checkout !== null && nights < settings.min_nights
+
   const isRangeValid = Boolean(
     checkin &&
     checkout &&
     !bookedDates.some(d => d >= checkin! && d < checkout!)
   )
 
-  const ctaHref = isRangeValid
+  const ctaHref = isRangeValid && !tooFewNights
     ? `/booking/confirm?checkin=${checkin}&checkout=${checkout}&guests=${guests}`
+    : null
+
+  const minNightsWarning = tooFewNights
+    ? lang === 'en'
+      ? `Minimum stay is ${settings.min_nights} night${settings.min_nights !== 1 ? 's' : ''}. You selected ${nights}.`
+      : `Минималният престой е ${settings.min_nights} нощ${settings.min_nights !== 1 ? 'и' : ''}. Избрали сте ${nights}.`
     : null
 
   const rateEur = Math.round(settings.base_rate / 100)
@@ -156,6 +170,9 @@ export default function BookingWidget({
             >
               {t('booking_cta')}
             </a>
+            {minNightsWarning && (
+              <p className={styles.minNightsWarning}>{minNightsWarning}</p>
+            )}
             <p className={styles.priceNote}>{t('booking_price_note')}</p>
           </div>
 
