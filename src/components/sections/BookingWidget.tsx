@@ -67,6 +67,8 @@ export default function BookingWidget({
   const [bookedDates, setBookedDates] = useState<string[]>([])
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS)
   const [loading, setLoading] = useState(true)
+  const [computedTotalEur, setComputedTotalEur] = useState<number | null>(null)
+  const [hasSeasonal, setHasSeasonal] = useState(false)
 
   useEffect(() => {
     Promise.all([
@@ -84,6 +86,20 @@ export default function BookingWidget({
     }).finally(() => setLoading(false))
   }, [])
 
+  useEffect(() => {
+    if (!checkin || !checkout || checkout <= checkin) {
+      setComputedTotalEur(null)
+      return
+    }
+    fetch(`/api/price?checkin=${checkin}&checkout=${checkout}&guests=${guests}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.totalEur) setComputedTotalEur(data.totalEur)
+        setHasSeasonal(!!data.hasSeasonal)
+      })
+      .catch(() => { setComputedTotalEur(null); setHasSeasonal(false) })
+  }, [checkin, checkout, guests])
+
   const nights =
     checkin && checkout
       ? differenceInCalendarDays(parseISO(checkout), parseISO(checkin))
@@ -98,7 +114,7 @@ export default function BookingWidget({
   )
 
   const ctaHref = isRangeValid && !tooFewNights
-    ? `/booking/confirm?checkin=${checkin}&checkout=${checkout}&guests=${guests}`
+    ? `/booking/confirm?checkin=${checkin}&checkout=${checkout}&guests=${guests}${computedTotalEur ? `&total=${computedTotalEur}` : ''}${hasSeasonal ? '&seasonal=1' : ''}`
     : null
 
   const minNightsWarning = tooFewNights
@@ -160,6 +176,8 @@ export default function BookingWidget({
               baseRate={settings.base_rate}
               baseOccupancy={settings.base_occupancy}
               extraPersonFee={settings.extra_person_fee}
+              grandTotal={computedTotalEur !== null ? computedTotalEur / 100 : undefined}
+              hasSeasonal={hasSeasonal}
             />
 
             <a

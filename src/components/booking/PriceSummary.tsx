@@ -11,6 +11,8 @@ interface Props {
   baseRate?: number       // cents, default €100
   baseOccupancy?: number  // default 2
   extraPersonFee?: number // cents per extra guest per night, default €15
+  grandTotal?: number     // EUR override (from /api/price, includes seasonal pricing)
+  hasSeasonal?: boolean   // true when seasonal pricing overrides apply
 }
 
 export default function PriceSummary({
@@ -20,6 +22,8 @@ export default function PriceSummary({
   baseRate = 10000,
   baseOccupancy = 2,
   extraPersonFee = 1500,
+  grandTotal,
+  hasSeasonal = false,
 }: Props) {
   const { t } = useTranslation()
 
@@ -30,18 +34,21 @@ export default function PriceSummary({
   const nights = differenceInCalendarDays(new Date(checkout), new Date(checkin))
   const rateEur = baseRate / 100
   const feeEur = extraPersonFee / 100
-  const baseTotal = nights * rateEur
   const extraGuests = Math.max(0, guests - baseOccupancy)
   const extraTotal = nights * extraGuests * feeEur
-  const grandTotal = baseTotal + extraTotal
+  const displayTotal = grandTotal !== undefined ? grandTotal : nights * rateEur + extraTotal
+  const nightsSubtotal = grandTotal !== undefined ? grandTotal - extraTotal : nights * rateEur
 
   const nightsLabel = nights === 1 ? t('booking_nights') : t('booking_nights_plural')
 
   return (
     <div className={styles.priceSummary}>
       <div className={styles.priceRow}>
-        <span>{nights} {nightsLabel} × €{rateEur}</span>
-        <span>€{baseTotal}</span>
+        {hasSeasonal
+          ? <span>{nights} {nightsLabel}</span>
+          : <span>{nights} {nightsLabel} × €{rateEur}</span>
+        }
+        <span>€{nightsSubtotal}</span>
       </div>
 
       {extraGuests > 0 && (
@@ -53,7 +60,7 @@ export default function PriceSummary({
 
       <div className={`${styles.priceRow} ${styles.priceRowTotal}`}>
         <span>{t('booking_total')}</span>
-        <span>€{grandTotal}</span>
+        <span>€{displayTotal}</span>
       </div>
     </div>
   )

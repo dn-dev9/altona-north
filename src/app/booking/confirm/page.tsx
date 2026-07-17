@@ -19,6 +19,8 @@ function ConfirmPageContent() {
     const checkin = searchParams.get("checkin") ?? "";
     const checkout = searchParams.get("checkout") ?? "";
     const guests = Number(searchParams.get("guests") ?? 2);
+    const totalParam = Number(searchParams.get("total") ?? 0);
+    const hasSeasonal = searchParams.get("seasonal") === "1";
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -55,9 +57,9 @@ function ConfirmPageContent() {
     const rateEur = settings.base_rate / 100;
     const feeEur = settings.extra_person_fee / 100;
     const extraGuests = Math.max(0, guests - settings.base_occupancy);
-    const baseTotal = nights * rateEur;
     const extraGuestFee = extraGuests * feeEur * nights;
-    const total = baseTotal + extraGuestFee;
+    const total = totalParam > 0 ? totalParam / 100 : nights * rateEur + extraGuestFee;
+    const nightsSubtotal = hasSeasonal ? total - extraGuestFee : nights * rateEur;
 
     const dateLocale = lang === "bg" ? bgLocale : enUS;
     const formatDateDisplay = (d: Date) => format(d, "d MMM", { locale: dateLocale });
@@ -306,9 +308,9 @@ function ConfirmPageContent() {
                                 <div className={styles.priceRows}>
                                     <div className={styles.priceRow}>
                                         <span className={styles.priceRowLabel}>
-                                            {nights} {nightWord} × €{rateEur}
+                                            {hasSeasonal ? `${nights} ${nightWord}` : `${nights} ${nightWord} × €${rateEur}`}
                                         </span>
-                                        <span className={styles.priceRowVal}>€{baseTotal}</span>
+                                        <span className={styles.priceRowVal}>€{nightsSubtotal}</span>
                                     </div>
                                     {extraGuestFee > 0 && (
                                         <div className={styles.priceRow}>
